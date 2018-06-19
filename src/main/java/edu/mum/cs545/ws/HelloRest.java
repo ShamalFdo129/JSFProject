@@ -7,39 +7,18 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
-import cs545.airline.model.Airline;
 import cs545.airline.service.AirlineService;
 
 @Named
 @Path("hello")
 public class HelloRest {
+    @Inject
+    private AirlineService airlineService;
 
-	@Inject
-	private AirlineService airlineService;
+    @GET
+    public String helloWorld(@DefaultValue("Gorgeous") @QueryParam("name") String name) {
+        return "Hello " + name + "!";
+    }
 
-	@GET
-	public String helloWorld(@DefaultValue("Gorgeous") @QueryParam("name") String name) {
-		return "Hello " + name + "!";
-	}
-
-	@Path("airline")
-	@GET
-	public String getAirlineTest() throws Exception {
-		Airline airline = new Airline();
-
-		try {
-			airline.setName("ABC");
-			airlineService.create(airline);
-		}catch(Exception e){
-			//throw new Exception("ASFDFAFAS" );
-		}
-
-		String result = "Nil!";
-		airline = airlineService.findByName("SkyTeam");
-		if (airline != null) {
-			result = "This is an airline: " + airline.getName();
-		}
-		return result;
-	}
 
 }
