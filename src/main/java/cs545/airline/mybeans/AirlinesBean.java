@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.sound.midi.Soundbank;
 
@@ -67,7 +68,10 @@ public class AirlinesBean implements Serializable {
 	public void setShowUndo(boolean showUndo) {
 		this.showUndo = showUndo;
 	}
-	
-	
+
+	public void changeEditStatus(Airline airline) {
+		airline.setEditable(!airline.isEditable());
+		airlineService.update(airline);
+	}
 
 }

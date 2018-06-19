@@ -25,10 +25,12 @@
 				<h:outputText value="#{airline.id}" />
 			</p:column>
 			<p:column id="name" headerText="Airline Name">
-				<h:outputText value="#{airline.name}" />
+				<h:outputText value="#{airline.name}" rendered="#{!airline.editable}"/>
+				<h:inputText id="updateName" value="#{airline.name}" rendered="#{airline.editable}"> </h:inputText>
 			</p:column>
 			<p:column id="edit" headerText="edit">
-				<h:commandButton value="edit"  />
+				<h:commandButton value="#{airline.editable?'Save':'Edit'}"
+								 action="#{airlinesBean.changeEditStatus(airline)}"/>
 			</p:column>
 			<p:column id="delete" headerText="delete">
 				<h:commandButton value="delete"  action="#{airlinesBean.deleteAirline(airline.id)}"/>
