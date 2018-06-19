@@ -31,23 +31,16 @@
 				<h:commandButton value="edit"  />
 			</p:column>
 			<p:column id="delete" headerText="delete">
-				<h:commandButton value="delete"  />
+				<h:commandButton value="delete"  action="#{airlinesBean.deleteAirline(airline.id)}"/>
 			</p:column>
 		</p:dataTable>
 		<br />
 
  		<h:panelGrid id="grid">
-		<h:panelGroup id="doBtnPG">
-
-			<p:commandButton value="Create-New-Airline" rendered="#{airlinesBean.showDo}"
-				action="#{airlinesBean.doAction}" update="grid" />
-		</h:panelGroup>
-
 		<h:panelGroup id="unDoBtnPG">
-			<h:outputText value="Airline Name:" rendered="#{airlinesBean.showUndo}" />
-			<p:inputText id="arlname" value="#{airlineName}" rendered="#{airlinesBean.showUndo}"/>
-			<p:commandButton value="Create" rendered="#{airlinesBean.showUndo}"
-				action="#{airlinesBean.createAirline(airlineName)}"  update="form" />
+			<h:outputText value="Airline Name:" />
+			<p:inputText id="arlname" value="#{airlineName}"/>
+			<p:commandButton value="Create"  action="#{airlinesBean.createAirline(airlineName)}"  update="form" />
 		</h:panelGroup>
 		</h:panelGrid>
 

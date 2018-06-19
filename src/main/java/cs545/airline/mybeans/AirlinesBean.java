@@ -25,10 +25,10 @@ public class AirlinesBean implements Serializable {
 	
 	public void createAirline(String name) {
 		System.out.println(">>>>>>>Creating new airline with name: ");
-//		Airline airline = new Airline(name);
-////		airline.setName(name);
-//		airlineService.create(airline);
-		undoAction();
+		Airline airline = new Airline();
+		airline.setName(name);
+		airlineService.create(airline);
+		//undoAction();
 	}
 	
 	public List<Airline> findAll() {
@@ -43,6 +43,12 @@ public class AirlinesBean implements Serializable {
 	public void undoAction() {
 		showUndo = false;
 		showDo= true;
+	}
+
+	public void deleteAirline(long id){
+		Airline airline=new Airline();
+		airline.setId(id);
+		airlineService.delete(airlineService.find(airline));
 	}
 
 	public boolean isShowDo() {
