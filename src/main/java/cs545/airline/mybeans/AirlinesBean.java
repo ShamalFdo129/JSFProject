@@ -23,11 +23,12 @@ public class AirlinesBean implements Serializable {
 	@Inject
 	private AirlineService airlineService;
 	
-	public void createAirline(String name) {
+	public String createAirline(String name) {
 		System.out.println(">>>>>>>Creating new airline with name: ");
 		Airline airline = new Airline();
 		airline.setName(name);
 		airlineService.create(airline);
+		return "airlineslist?faces-redirect=true";
 		//undoAction();
 	}
 	
