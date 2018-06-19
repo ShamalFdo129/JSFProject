@@ -26,8 +26,11 @@ public class AirportDao {
 	}
 
 	public Airport update(Airport airport) {
-
-		return entityManager.merge(airport);
+		Airport airport1;
+		entityManager.getTransaction().begin();
+		airport1= entityManager.merge(airport);
+		entityManager.getTransaction().commit();
+		return  airport1;
 	}
 
 	public void delete(Airport airport) {

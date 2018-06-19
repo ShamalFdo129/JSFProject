@@ -15,6 +15,7 @@ import javax.inject.Named;
 import javax.ws.rs.*;
 import javax.ws.rs.Path;
 import java.util.List;
+import java.util.Random;
 
 @Named
 @Path("flight")
@@ -96,6 +97,7 @@ public class FlightRest {
                 flightData.getArrivalTime()
         );
 
+        flight.setId(flightData.getId());
         Airport origin = new Airport();
         origin.setId(flightData.getOriginId());
         flight.setOrigin(airportService.find(origin));

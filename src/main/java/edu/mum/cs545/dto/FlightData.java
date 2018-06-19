@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class FlightData {
+    private long id;
     private String flightnr;
     private Date departureDate;
     private Date departureTime;
@@ -101,5 +102,13 @@ public class FlightData {
 
     public void setAirplaneId(long airplaneId) {
         this.airplaneId = airplaneId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

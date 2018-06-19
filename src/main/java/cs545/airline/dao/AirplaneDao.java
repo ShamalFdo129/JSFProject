@@ -26,7 +26,11 @@ public class AirplaneDao {
 	}
 
 	public Airplane update(Airplane airplane) {
-		return entityManager.merge(airplane);
+		Airplane airplane1;
+		entityManager.getTransaction().begin();
+		airplane1= entityManager.merge(airplane);
+		entityManager.getTransaction().commit();
+		return airplane1;
 	}
 
 	public void delete(Airplane airplane) {
