@@ -3,8 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 <h:head>
 	<title>Test</title>
@@ -21,10 +20,6 @@
 				value="Test Airport Service" />
 			<h:commandButton action="#{testFlightService.runAll}"
 				value="Test Flight Service" />
-			<h:commandLink action="flightlistprime.xhtml"
-				value="All flights list" />
-			<h:commandLink action="airlineslist.xhtml"
-				value="List  of Airlines" />
 			<br />
 
 			#{testAirlineService.messages}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	 >
+
+<h:head>
+	<title>Flights Info</title>
+	<style  type="text/css">
+	#form{
+		
+		}
+	</style>
+</h:head>
+<h:body>
+	<h1>List of Airlines</h1>
+	
+	<h:form id="form">
+		<p:dataTable id="airlinestable" var="airline" value="#{airlinesBean.findAll()}" >
+			<p:column id="id" headerText="Id">
+				<h:outputText value="#{airline.id}" />
+			</p:column>
+			<p:column id="name" headerText="Airline Name">
+				<h:outputText value="#{airline.name}" />
+			</p:column>
+			<p:column id="edit" headerText="edit">
+				<h:commandButton value="edit"  />
+			</p:column>
+			<p:column id="delete" headerText="delete">
+				<h:commandButton value="delete"  />
+			</p:column>
+		</p:dataTable>
+		<br />
+
+ 		<h:panelGrid id="grid">
+		<h:panelGroup id="doBtnPG">
+
+			<p:commandButton value="Create-New-Airline" rendered="#{airlinesBean.showDo}"
+				action="#{airlinesBean.doAction}" update="grid" />
+		</h:panelGroup>
+
+		<h:panelGroup id="unDoBtnPG">
+			<h:outputText value="Airline Name:" rendered="#{airlinesBean.showUndo}" />
+			<p:inputText id="arlname" value="#{airlineName}" rendered="#{airlinesBean.showUndo}"/>
+			<p:commandButton value="Create" rendered="#{airlinesBean.showUndo}"
+				action="#{airlinesBean.createAirline(airlineName)}"  update="form" />
+		</h:panelGroup>
+		</h:panelGrid>
+
+	</h:form>
+</h:body>
+</html>

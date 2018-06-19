@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	 >
+
+<h:head>
+	<title>Flights Info</title>
+	<style  type="text/css">
+	#form{
+		
+		}
+	</style>
+</h:head>
+<h:body>
+	<h1>Search Flights</h1>
+	<img src="https://thumbnails.trvl-media.com/XDLEvGqRCe48xzTW1YA1Bfw4klo=/media.expedia.com/media/content/expuk/graphics/landingpages/GMT/flightmerch/evergreen/image_gromerch-1640_532x299.jpg" alt="image" />
+	<h:form id="form">
+		<p:dataTable rows="5" paginator="true" id="table" tableStyle="width:150px" var="flight" value="#{fightBean.findAllFlights()}"  filteredValue="#{fightBean.filteredFlightList}"  widgetVar="flightWidget" border="1">
+			
+			<f:facet name="header">
+                <p:outputPanel>
+                    <h:outputText value="Search all:"/>
+                    <p:inputText id="globalFilter"
+                                 onkeyup="PF('flightWidget').filter()"
+                                  placeholder="Search text"/>
+                </p:outputPanel>
+            </f:facet>
+			
+			<p:column id="flightnum" headerText="Flight Number" filterBy="#{flight.flightnr}" filterMatchMode="contains">
+				<h:outputText value="#{flight.flightnr}" />
+			</p:column>
+			<p:column id="airline" headerText="Airline" filterBy="#{flight.airline.name}" filterMatchMode="contains">
+				<h:outputText value="#{flight.airline.name}" />
+			</p:column>
+       		<p:column id="departdate" headerText="Departure Date" filterBy="#{flight.departureDate}" filterMacthMode="exact">
+       			<h:outputText value="#{flight.departureDate}" />
+       		</p:column>
+       		<p:column id="departtime" headerText="Departure Time" filterBy="#{flight.departureTime}" filterMacthMode="exact">
+       			<h:outputText value="#{flight.departureTime}" />
+       		</p:column>
+       		<p:column id="arrivaldate" headerText="Arrival Date" filterBy="#{flight.arrivalDate}" filterMacthMode="exact">
+       			<h:outputText value="#{flight.arrivalDate}" />
+       		</p:column>
+       		<p:column id="arrivaltime" headerText="Arrival Time" filterBy="#{flight.arrivalTime}" filterMacthMode="exact">
+       			<h:outputText value="#{flight.arrivalTime}" />
+       		</p:column>
+       		<p:column id="departairportcode" headerText="Departure Airport Code" filterBy="#{flight.origin.airportcode}" filterMacthMode="exact">
+       			<h:outputText value="#{flight.origin.airportcode}" />
+       		</p:column>
+       		<p:column id="departairportname" headerText="Departure Airport Name" filterBy="#{flight.origin.name}" filterMacthMode="contains">
+       			<h:outputText value="#{flight.origin.name}" />
+       		</p:column>
+       		<p:column id="destinationairportcode" headerText="Destination Airport Code" filterBy="#{flight.destination.airportcode}" filterMacthMode="exact">
+       			<h:outputText value="#{flight.destination.airportcode}" />
+       		</p:column>
+       		<p:column id="destinationairportname" headerText="Destination Airport Name" filterBy="#{flight.destination.name}" filterMacthMode="contains">
+       			<h:outputText value="#{flight.destination.name}" />
+       		</p:column>
+       		<p:column id="airplainemodel" headerText="Airplaine model">
+       			<h:outputText value="#{flight.airplane.model}" />
+       		</p:column>
+       		<p:column id="capacity" headerText="Capacity">
+       			<h:outputText value="#{flight.airplane.capacity}" />
+       		</p:column>
+       		      		
+       		
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
