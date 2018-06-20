@@ -12,26 +12,12 @@
 <h:body>
 	<h:form>
 		<h:panelGrid columns="1">
-			<h1>Test</h1>
-			<h:commandButton action="#{testAirlineService.runAll}"
-				value="Test Airline Service" />
-			<h:commandButton action="#{testAirplaneService.runAll}"
-				value="Test Airplane Service" />
-			<h:commandButton action="#{testAirportService.runAll}"
-				value="Test Airport Service" />
-			<h:commandButton action="#{testFlightService.runAll}"
-				value="Test Flight Service" />
+			<h1>Airport</h1>
 			<h:commandLink action="flightlistprime.xhtml"
 				value="All flights list" />
 			<h:commandLink action="airlineslist.xhtml"
 				value="List  of Airlines" />
 			<br />
-
-			#{testAirlineService.messages}
-			#{testAirplaneService.messages}
-			#{testAirportService.messages}
-			#{testFlightService.messages}
-
 		</h:panelGrid>
 	</h:form>
 </h:body>
